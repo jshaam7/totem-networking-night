@@ -1,0 +1,12 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {validate,imageInfo,originsMatch} from '../netlify/functions/shared.mjs';
+const base={name:'Test Guest',faculty:'Science',major:'Statistics',industry:'Data',status:'Student',publishConsent:true};
+test('consent required',()=>assert.throws(()=>validate({...base,publishConsent:false}),/Permission/));
+test('linkedin consent separate',()=>assert.equal(validate({...base,linkedin:'https://linkedin.com/in/test'}).linkedin,''));
+test('reject non-LinkedIn URLs',()=>assert.throws(()=>validate({...base,linkedin:'javascript:alert(1)',linkedinConsent:true}),/LinkedIn/));
+test('strip excess control characters and limit text length',()=>assert.equal(validate({...base,name:'Jane\nDoe'}).name,'Jane Doe'));
+test('photo rejects forgery',()=>assert.throws(()=>imageInfo('data:image/png;base64,'+Buffer.from('not a real photo file').toString('base64')),/content/));
+test('photo rejects non-image content',()=>assert.throws(()=>imageInfo('data:image/svg+xml;base64,PHN2Zz4='),/JPEG/));
+test('reject third-party origins',()=>assert.equal(originsMatch(new Request('https://example.net/api/profiles',{headers:{Origin:'https://evil.test'}})),false));
+test('accept same origins',()=>assert.equal(originsMatch(new Request('https://example.net/api/profiles',{headers:{Origin:'https://example.net'}})),true));

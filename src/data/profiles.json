@@ -1,0 +1,491 @@
+[
+  {
+    "id": "guest-1",
+    "name": "Shaam Purushothaman Jayakumaran",
+    "fullName": "Shaam Purushothaman Jayakumaran",
+    "status": "Current student",
+    "title": "AI Analyst Co-op Student",
+    "organization": "Connected Services BC: Ministry of Citizens' Services",
+    "faculty": "Science",
+    "major": "B+MM Dual Degree Program: BSc Statistics + Master of Management",
+    "graduationYear": "2028",
+    "companies": [
+      "UBC Data Science Institute",
+      "Connected Services BC"
+    ],
+    "roles": [
+      "Data Science Fellowship Co-op",
+      "AI Analyst"
+    ],
+    "industry": "Technology / AI / Data",
+    "otherInterests": "Business/Consulting",
+    "topics": [],
+    "advice": "Sleep well before a final exam",
+    "linkedin": "https://www.linkedin.com/in/shaam-purushothaman-jayakumaran/",
+    "isPlaceholder": false
+  },
+  {
+    "id": "demo-1",
+    "name": "Avery Chen",
+    "fullName": "Avery Chen",
+    "status": "Current student",
+    "title": "Software Engineering Intern",
+    "organization": "Electronic Arts",
+    "faculty": "Applied Science",
+    "major": "Computer Engineering",
+    "graduationYear": "2027",
+    "companies": [
+      "Shopify",
+      "Electronic Arts"
+    ],
+    "roles": [
+      "Frontend Engineering Intern",
+      "QA Engineering Intern"
+    ],
+    "industry": "Technology / AI / Data",
+    "otherInterests": "Product Management",
+    "topics": [
+      "Technical interviews",
+      "Finding your first internship",
+      "Side projects"
+    ],
+    "advice": "Build one small project you can explain well.",
+    "linkedin": "",
+    "isPlaceholder": true
+  },
+  {
+    "id": "demo-2",
+    "name": "Maya Patel",
+    "fullName": "Maya Patel",
+    "status": "Recent graduate",
+    "title": "Business Analyst",
+    "organization": "RBC",
+    "faculty": "Commerce",
+    "major": "Finance",
+    "graduationYear": "2026",
+    "companies": [
+      "Deloitte",
+      "RBC"
+    ],
+    "roles": [
+      "Consulting Intern",
+      "Finance Summer Analyst"
+    ],
+    "industry": "Business / Consulting",
+    "otherInterests": "Finance",
+    "topics": [
+      "Case interviews",
+      "Networking",
+      "Finance recruitment"
+    ],
+    "advice": "Talk to people early, not just when applications open.",
+    "linkedin": "",
+    "isPlaceholder": true
+  },
+  {
+    "id": "demo-3",
+    "name": "Jordan Kim",
+    "fullName": "Jordan Kim",
+    "status": "Current student",
+    "title": "Data Science Co-op",
+    "organization": "SAP",
+    "faculty": "Science",
+    "major": "Computer Science",
+    "graduationYear": "2027",
+    "companies": [
+      "TELUS",
+      "SAP"
+    ],
+    "roles": [
+      "Data Analyst Intern",
+      "Data Science Intern"
+    ],
+    "industry": "Technology / AI / Data",
+    "otherInterests": "Business/Consulting",
+    "topics": [
+      "Data science portfolios",
+      "Coding assessments",
+      "Co-op applications"
+    ],
+    "advice": "Your first internship does not have to be your dream role.",
+    "linkedin": "",
+    "isPlaceholder": true
+  },
+  {
+    "id": "demo-4",
+    "name": "Sofia Nguyen",
+    "fullName": "Sofia Nguyen",
+    "status": "Recent graduate",
+    "title": "Policy Analyst",
+    "organization": "City of Vancouver",
+    "faculty": "Arts",
+    "major": "Economics",
+    "graduationYear": "2026",
+    "companies": [
+      "BC Public Service",
+      "City of Vancouver"
+    ],
+    "roles": [
+      "Policy Research Assistant",
+      "Program Analyst Co-op"
+    ],
+    "industry": "Government / Public Sector",
+    "otherInterests": "Research",
+    "topics": [
+      "Public service careers",
+      "Writing applications",
+      "Informational interviews"
+    ],
+    "advice": "Get comfortable asking thoughtful questions.",
+    "linkedin": "",
+    "isPlaceholder": true
+  },
+  {
+    "id": "demo-5",
+    "name": "Ethan Brooks",
+    "fullName": "Ethan Brooks",
+    "status": "Current student",
+    "title": "Mechanical Design Co-op",
+    "organization": "FortisBC",
+    "faculty": "Applied Science",
+    "major": "Mechanical Engineering",
+    "graduationYear": "2028",
+    "companies": [
+      "Ballard Power Systems",
+      "FortisBC"
+    ],
+    "roles": [
+      "Mechanical Design Intern",
+      "Engineering Student"
+    ],
+    "industry": "Engineering / Manufacturing",
+    "otherInterests": "Sustainability",
+    "topics": [
+      "Engineering portfolios",
+      "Career fairs",
+      "Technical resumes"
+    ],
+    "advice": "Document what you make, even in class projects.",
+    "linkedin": "",
+    "isPlaceholder": true
+  },
+  {
+    "id": "demo-6",
+    "name": "Isabella Wong",
+    "fullName": "Isabella Wong",
+    "status": "Current student",
+    "title": "Analytics Intern",
+    "organization": "Hootsuite",
+    "faculty": "Science",
+    "major": "Statistics",
+    "graduationYear": "2027",
+    "companies": [
+      "Amazon",
+      "Hootsuite"
+    ],
+    "roles": [
+      "Business Intelligence Intern",
+      "Data Analyst Intern"
+    ],
+    "industry": "Technology / AI / Data",
+    "otherInterests": "Business/Consulting",
+    "topics": [
+      "SQL interviews",
+      "Analytics projects",
+      "Job search strategy"
+    ],
+    "advice": "Show how your analysis leads to decisions.",
+    "linkedin": "",
+    "isPlaceholder": true
+  },
+  {
+    "id": "demo-7",
+    "name": "Noah Williams",
+    "fullName": "Noah Williams",
+    "status": "Recent graduate",
+    "title": "People Operations Coordinator",
+    "organization": "Workday",
+    "faculty": "Arts",
+    "major": "Psychology",
+    "graduationYear": "2026",
+    "companies": [
+      "Lululemon",
+      "Workday"
+    ],
+    "roles": [
+      "People Analytics Intern",
+      "HR Co-op"
+    ],
+    "industry": "Human Resources / People",
+    "otherInterests": "Technology / AI / Data",
+    "topics": [
+      "Nontechnical co-ops",
+      "Transferable skills",
+      "Interview confidence"
+    ],
+    "advice": "Campus leadership experience counts.",
+    "linkedin": "",
+    "isPlaceholder": true
+  },
+  {
+    "id": "demo-8",
+    "name": "Amara Okafor",
+    "fullName": "Amara Okafor",
+    "status": "Current student",
+    "title": "Research Assistant",
+    "organization": "UBC Research",
+    "faculty": "Land and Food Systems",
+    "major": "Food, Nutrition and Health",
+    "graduationYear": "2027",
+    "companies": [
+      "BC Centre for Disease Control",
+      "UBC Research"
+    ],
+    "roles": [
+      "Research Student",
+      "Program Evaluation Intern"
+    ],
+    "industry": "Health / Life Sciences",
+    "otherInterests": "Research",
+    "topics": [
+      "Research applications",
+      "Health careers",
+      "Finding mentors"
+    ],
+    "advice": "Send that email to the professor you admire.",
+    "linkedin": "",
+    "isPlaceholder": true
+  },
+  {
+    "id": "demo-9",
+    "name": "Liam O’Connor",
+    "fullName": "Liam O’Connor",
+    "status": "Recent graduate",
+    "title": "Growth Marketing Specialist",
+    "organization": "Aritzia",
+    "faculty": "Commerce",
+    "major": "Marketing",
+    "graduationYear": "2026",
+    "companies": [
+      "Electronic Arts",
+      "Aritzia"
+    ],
+    "roles": [
+      "Marketing Co-op",
+      "Growth Intern"
+    ],
+    "industry": "Marketing / Communications",
+    "otherInterests": "Retail",
+    "topics": [
+      "Creative portfolios",
+      "Marketing analytics",
+      "Personal branding"
+    ],
+    "advice": "Keep a folder of every project you are proud of.",
+    "linkedin": "",
+    "isPlaceholder": true
+  },
+  {
+    "id": "demo-10",
+    "name": "Zara Ahmed",
+    "fullName": "Zara Ahmed",
+    "status": "Current student",
+    "title": "Sustainability Analyst Intern",
+    "organization": "BC Hydro",
+    "faculty": "Science",
+    "major": "Environmental Sciences",
+    "graduationYear": "2027",
+    "companies": [
+      "Metro Vancouver",
+      "BC Hydro"
+    ],
+    "roles": [
+      "Environmental Analyst Co-op",
+      "Sustainability Intern"
+    ],
+    "industry": "Environment / Sustainability",
+    "otherInterests": "Government / Public Sector",
+    "topics": [
+      "Climate careers",
+      "Government internships",
+      "Networking"
+    ],
+    "advice": "Your coursework can lead to unexpected industries.",
+    "linkedin": "",
+    "isPlaceholder": true
+  },
+  {
+    "id": "demo-11",
+    "name": "Oliver Garcia",
+    "fullName": "Oliver Garcia",
+    "status": "Current student",
+    "title": "Project Coordinator Co-op",
+    "organization": "PCL Construction",
+    "faculty": "Applied Science",
+    "major": "Civil Engineering",
+    "graduationYear": "2027",
+    "companies": [
+      "WSP",
+      "PCL Construction"
+    ],
+    "roles": [
+      "Civil Engineering Intern",
+      "Project Coordinator Intern"
+    ],
+    "industry": "Engineering / Manufacturing",
+    "otherInterests": "Infrastructure",
+    "topics": [
+      "Engineering consulting",
+      "Site work",
+      "Interview preparation"
+    ],
+    "advice": "Ask about the day-to-day work, not only job titles.",
+    "linkedin": "",
+    "isPlaceholder": true
+  },
+  {
+    "id": "demo-12",
+    "name": "Anika Shah",
+    "fullName": "Anika Shah",
+    "status": "Recent graduate",
+    "title": "Product Operations Associate",
+    "organization": "SAP",
+    "faculty": "Commerce",
+    "major": "Business Technology Management",
+    "graduationYear": "2026",
+    "companies": [
+      "Microsoft",
+      "SAP"
+    ],
+    "roles": [
+      "Product Operations Intern",
+      "Business Systems Analyst"
+    ],
+    "industry": "Technology / AI / Data",
+    "otherInterests": "Business/Consulting",
+    "topics": [
+      "Product careers",
+      "Cross-functional work",
+      "Business + tech"
+    ],
+    "advice": "Learn to translate between technical and nontechnical teams.",
+    "linkedin": "",
+    "isPlaceholder": true
+  },
+  {
+    "id": "demo-13",
+    "name": "Riley Morgan",
+    "fullName": "Riley Morgan",
+    "status": "Current student",
+    "title": "Communications Co-op",
+    "organization": "Vancouver Coastal Health",
+    "faculty": "Arts",
+    "major": "International Relations",
+    "graduationYear": "2028",
+    "companies": [
+      "UBC",
+      "Vancouver Coastal Health"
+    ],
+    "roles": [
+      "Communications Intern",
+      "Community Outreach Assistant"
+    ],
+    "industry": "Marketing / Communications",
+    "otherInterests": "Government / Public Sector",
+    "topics": [
+      "Writing cover letters",
+      "Communications roles",
+      "Student clubs"
+    ],
+    "advice": "Writing clearly is a career skill in every field.",
+    "linkedin": "",
+    "isPlaceholder": true
+  },
+  {
+    "id": "demo-14",
+    "name": "Arjun Mehta",
+    "fullName": "Arjun Mehta",
+    "status": "Current student",
+    "title": "Laboratory Research Co-op",
+    "organization": "AbCellera",
+    "faculty": "Science",
+    "major": "Biochemistry",
+    "graduationYear": "2027",
+    "companies": [
+      "STEMCELL Technologies",
+      "AbCellera"
+    ],
+    "roles": [
+      "Lab Research Intern",
+      "Quality Control Co-op"
+    ],
+    "industry": "Health / Life Sciences",
+    "otherInterests": "Biotechnology",
+    "topics": [
+      "Lab internships",
+      "Research skills",
+      "Grad school choices"
+    ],
+    "advice": "Keep a record of techniques you learn in labs.",
+    "linkedin": "",
+    "isPlaceholder": true
+  },
+  {
+    "id": "demo-15",
+    "name": "Chloe Park",
+    "fullName": "Chloe Park",
+    "status": "Recent graduate",
+    "title": "Associate Accountant",
+    "organization": "BDO",
+    "faculty": "Commerce",
+    "major": "Accounting",
+    "graduationYear": "2026",
+    "companies": [
+      "KPMG",
+      "BDO"
+    ],
+    "roles": [
+      "Audit Co-op",
+      "Assurance Intern"
+    ],
+    "industry": "Finance / Accounting",
+    "otherInterests": "Consulting",
+    "topics": [
+      "Accounting recruitment",
+      "CPA path",
+      "Interview tips"
+    ],
+    "advice": "Do coffee chats before recruiting season gets busy.",
+    "linkedin": "",
+    "isPlaceholder": true
+  },
+  {
+    "id": "demo-16",
+    "name": "Mateo Silva",
+    "fullName": "Mateo Silva",
+    "status": "Current student",
+    "title": "GIS Technician Co-op",
+    "organization": "Teck Resources",
+    "faculty": "Forestry",
+    "major": "Natural Resources Conservation",
+    "graduationYear": "2027",
+    "companies": [
+      "Parks Canada",
+      "Teck Resources"
+    ],
+    "roles": [
+      "GIS Intern",
+      "Environmental Data Co-op"
+    ],
+    "industry": "Environment / Sustainability",
+    "otherInterests": "Government / Public Sector",
+    "topics": [
+      "Fieldwork",
+      "GIS careers",
+      "Technical and outdoor skills"
+    ],
+    "advice": "Choose opportunities that teach you how work gets done.",
+    "linkedin": "",
+    "isPlaceholder": true
+  }
+]
