@@ -8,7 +8,7 @@ const MAPS_URL = 'https://www.google.com/maps/search/?api=1&query=2525+West+Mall
 // EDIT HERE: organizer contact data. Add Yash's Instagram URL when available.
 const ORGANIZERS = [
   { name: 'Shaam Purushothaman Jayakumaran', role: 'SRA', location: '6th Floor, Nootka House', email: 'shaam.jayakumaran@ubc.ca', instagram: 'https://instagram.com/jshaam7', instagramHandle: '@jshaam7' },
-  { name: 'Yash Vasudev', role: 'RA', location: '3rd Floor, Dene House', email: 'yash.vasudev@ubc.ca', instagram: '', instagramHandle: '' },
+  { name: 'Yash Vasdev', role: 'RA', location: 'Dene House', email: 'yash.vasdev@ubc.ca', instagram: 'https://instagram.com/yash_denera', instagramHandle: '@yash_denera' },
 ] as const
 
 function OrganizerModal({onClose,returnFocus}:{onClose:()=>void;returnFocus:React.RefObject<HTMLButtonElement>}) {
