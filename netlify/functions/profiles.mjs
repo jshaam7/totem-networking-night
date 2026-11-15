@@ -1,12 +1,12 @@
 import {getStore} from '@netlify/blobs';
-import {json,clean,validate,imageInfo,originsMatch,storeName,photoStoreName} from './shared.mjs';
+import {json,clean,validate,imageInfo,originsMatch,storeName,photoStoreName,publicProfile} from './shared.mjs';
 export default async function handler(request){
  try{
   if(request.method==='GET'){
    const store=getStore(storeName());
    const entries=[];
    for await(const page of store.list({paginate:true,prefix:'profile/'})){
-    for(const blob of page.blobs){if(entries.length>=300)break;const p=await store.get(blob.key,{type:'json'});if(p)entries.push(p)}
+    for(const blob of page.blobs){if(entries.length>=300)break;const p=await store.get(blob.key,{type:'json'});if(publicProfile(p))entries.push(p)}
     if(entries.length>=300)break;
    }
    return json({profiles:entries});
@@ -28,9 +28,11 @@ export default async function handler(request){
   const photo=imageInfo(body.photoData);
   const id=`submitted-${crypto.randomUUID()}`;
   profile.id=id;
+  profile.reviewStatus=process.env.PROFILE_REVIEW_REQUIRED==='true'?'pending':'published';
+  profile.createdAt=new Date().toISOString();
   if(photo){await getStore(photoStoreName()).set(`photo/${id}`,new Blob([photo.data],{type:photo.mime}),{metadata:{mime:photo.mime}});profile.photoUrl=`/api/photo?id=${encodeURIComponent(id)}`}
   await getStore(storeName()).setJSON(`profile/${id}`,profile);
-  return json({success:true,profile},201);
+  return json({success:true,profile:profile.reviewStatus==='published'?profile:null,pending:profile.reviewStatus==='pending'},201);
  }catch(error){
   if(error instanceof SyntaxError)return json({error:'Invalid request data'},400);
   if(error instanceof Error&&/(Please|Photo|Permission|LinkedIn|Graduation|Invalid profile)/.test(error.message))return json({error:error.message},400);

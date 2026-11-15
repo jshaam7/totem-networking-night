@@ -34,3 +34,5 @@ export function originsMatch(request){
 }
 export function storeName(){return process.env.CONTEXT==='production'?'networking-profiles-prod':'networking-profiles-preview'}
 export function photoStoreName(){return process.env.CONTEXT==='production'?'networking-photos-prod':'networking-photos-preview'}
+
+export const publicProfile=p=>Boolean(p)&&!(['pending','hidden'].includes(p.reviewStatus));
