@@ -79,6 +79,7 @@ function ProfileForm({open,siteKey,onAdded}:{open:boolean;siteKey:string;onAdded
  const [error,setError]=useState('')
  const [sending,setSending]=useState(false)
  const [complete,setComplete]=useState(false)
+ const [awaitingReview,setAwaitingReview]=useState(false)
  const token=useRef('')
  const widget=useRef<HTMLDivElement>(null)
  const initialized=useRef(false)
@@ -101,12 +102,12 @@ function ProfileForm({open,siteKey,onAdded}:{open:boolean;siteKey:string;onAdded
   try{
    const result=await fetch('/api/profiles',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({...form,photoData:photo,turnstileToken:token.current})});
    const data=await result.json();if(!result.ok)throw Error(data.error||'Submission failed');
-   setComplete(true);setForm(startingForm);setPhoto('');await onAdded();
+   setAwaitingReview(data.pending===true);setComplete(true);setForm(startingForm);setPhoto('');await onAdded();
   }catch(e){setError(e instanceof Error?e.message:'Something went wrong. Please try again.')}
   finally{setSending(false)}
  }
  return <section id="add-profile" className="add-profile-section"><div className="add-profile-inner"><div className="mini-heading"><span/> FOR UPPER-YEARS & NEW GRADS</div><h2>Been there? <em>Pass it on.</em></h2><p className="add-intro">Had a co-op, internship, or a few lessons worth sharing? Help a first-year feel a little more ready for what comes next. Your information will appear publicly once submitted.</p><p className="form-audience-note">This form is for upper-year UBC students and recent grads who want to be featured. First-year residents coming to the event? <a href={RSVP_URL} target="_blank" rel="noopener noreferrer">RSVP here <ExternalLink size={13}/></a>.</p>
- {!open?<div className="closed-notice"><ShieldCheck size={24}/><div><strong>Profile submissions are currently closed.</strong><p>The directory is read-only. You can still browse and save profiles.</p></div></div>:complete?<div className="success-notice" role="status"><Check size={30}/><div><h3>Your profile is published!</h3><p>It now appears in the directory. Thank you for helping other UBC students.</p><button type="button" className="secondary-btn" onClick={()=>setComplete(false)}>Add another profile</button></div></div>:<form onSubmit={send} className="profile-form"><div className="form-grid">
+ {!open?<div className="closed-notice"><ShieldCheck size={24}/><div><strong>Profile submissions are currently closed.</strong><p>The directory is read-only. You can still browse and save profiles.</p></div></div>:complete?<div className="success-notice" role="status"><Check size={30}/><div><h3>{awaitingReview?'Profile received — awaiting organizer review':'Your profile is published!'}</h3><p>{awaitingReview?'Thanks for sharing your experience! An organizer will review your submission before it appears in the directory.':'It now appears in the directory. Thank you for helping other UBC students.'}</p><button type="button" className="secondary-btn" onClick={()=>setComplete(false)}>Add another profile</button></div></div>:<form onSubmit={send} className="profile-form"><div className="form-grid">
  <label>Full name *<input required maxLength={100} value={form.name} onChange={e=>set('name',e.target.value)} placeholder="e.g. Alex Chen"/></label>
  <label>Current status *<select required value={form.status} onChange={e=>set('status',e.target.value)}><option value="">Choose one</option><option>Current student</option><option>Recent graduate</option><option>Working professional</option></select></label>
  <label>Current role / title<input maxLength={160} value={form.title} onChange={e=>set('title',e.target.value)} placeholder="e.g. Data Analyst Co-op"/></label>

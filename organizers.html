@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta name="robots" content="noindex, nofollow"/><meta name="theme-color" content="#1A1A1A"/>
+<title>Organizer dashboard | Totem Park Networking Night</title>
+</head><body>
+<main class="admin-shell">
+  <header class="admin-header"><div><span class="eyebrow">CAREER CONNECTIONS · TOTEM PARK</span><h1>Organizer dashboard</h1><p>Review and manage profiles submitted through the website.</p></div><div class="header-actions"><a href="/" class="button ghost">← View website</a><button id="logout" class="button ghost" hidden>Sign out</button></div></header>
+  <section class="notice" aria-label="Profile sources"><strong>About profile sources</strong><p>Manage submissions stored in Netlify Blobs here. Original profiles and fictional examples in <code>src/data/profiles.json</code> are controlled by GitHub and aren't editable in this dashboard.</p></section>
+  <section id="login-panel" class="panel login-panel"><h2>Organizer sign-in</h2><p>Enter the existing <code>ADMIN_REMOVE_TOKEN</code> saved in Netlify. It is used only to create a short-lived secure session and is not saved in the browser.</p><form id="login-form"><label for="token">Organizer access token</label><input id="token" type="password" autocomplete="off" required placeholder="Paste organizer token"/><button class="button primary" type="submit">Sign in</button></form></section>
+  <section id="dashboard" hidden>
+    <div class="metrics"><div class="stat"><strong id="total">0</strong><span>Submitted</span></div><div class="stat"><strong id="pending">0</strong><span>Pending</span></div><div class="stat"><strong id="published">0</strong><span>Published</span></div><div class="stat"><strong id="hidden">0</strong><span>Hidden</span></div></div>
+    <div class="panel controls"><div><h2>Professional profiles</h2><p id="review-mode"></p></div><div class="control-row"><label>Search<input id="search" type="search" placeholder="Name, company, faculty…"/></label><label>Show<select id="status"><option value="all">All submissions</option><option value="pending">Awaiting approval</option><option value="published">Published</option><option value="hidden">Hidden</option></select></label><button id="refresh" class="button ghost">Refresh</button></div></div>
+    <div id="profiles" class="profile-list" aria-live="polite"></div>
+  </section>
+  <p id="feedback" class="feedback" role="status" aria-live="polite"></p>
+</main>
+<dialog id="edit-dialog" aria-labelledby="edit-title"><div class="dialog-head"><div><span class="eyebrow">EDIT SUBMISSION</span><h2 id="edit-title">Update professional</h2></div><button id="close-edit" class="button ghost" aria-label="Close editor">✕</button></div><form id="edit-form"><div id="edit-fields" class="edit-fields"></div><label>Publishing status<select name="reviewStatus"><option value="pending">Pending review</option><option value="published">Published</option><option value="hidden">Hidden</option></select></label><label class="photo-field">Replace photo (optional, JPEG/PNG/WebP, max 1.5 MB)<input name="photo" type="file" accept="image/jpeg,image/png,image/webp"/></label><label class="check"><input name="removePhoto" type="checkbox"/> Remove current photo</label><label class="check"><input name="linkedinConsent" type="checkbox"/> I have verified permission to publish this LinkedIn URL</label><div class="dialog-actions"><button type="button" class="button ghost" id="cancel-edit">Cancel</button><button class="button primary" type="submit">Save changes</button></div></form></dialog>
+<script type="module" src="/src/organizers.ts"></script></body></html>
