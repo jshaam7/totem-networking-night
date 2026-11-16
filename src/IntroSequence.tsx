@@ -176,10 +176,11 @@ export default function IntroSequence() {
     <div className={`intro-sequence intro-${stage} ${landing ? 'intro-ready' : ''}`} aria-label="Totem Park Networking Night introduction">
       <div className="intro-tv-wrap" style={wrapperStyle} aria-hidden="true">
         <BroadcastTelevision
-          mode={stage === 'screen' ? 'copy' : 'details'}
-          copy={copy}
-          cursor={stage === 'screen'}
+          mode={stage === 'establish' ? 'details' : 'blank'}
         />
+      </div>
+      <div className="intro-screen-copy" aria-hidden="true">
+        <p>{copy}{stage === 'screen' && <span className="intro-screen-cursor" />}</p>
       </div>
       <p className="intro-sr-only">Are you a first-year student? Curious about internships, research, networking, clubs, or getting involved? Come to Totem Park Networking Night.</p>
       <button className="intro-skip" type="button" onClick={skip}>Skip intro</button>

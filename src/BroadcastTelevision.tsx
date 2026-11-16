@@ -4,7 +4,7 @@ type BroadcastTelevisionProps = {
   className?: string
   copy?: string
   cursor?: boolean
-  mode?: 'copy' | 'details'
+  mode?: 'copy' | 'details' | 'blank'
 }
 
 export default function BroadcastTelevision({
