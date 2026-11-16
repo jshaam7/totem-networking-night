@@ -67,11 +67,13 @@ export default function IntroSequence() {
     if (television) resizeObserver?.observe(television)
     const animationFrame = window.requestAnimationFrame(syncLanding)
     window.addEventListener('resize', syncLanding)
+    window.visualViewport?.addEventListener('resize', syncLanding)
     return () => {
       document.body.classList.remove('tv-intro-active')
       resizeObserver?.disconnect()
       window.cancelAnimationFrame(animationFrame)
       window.removeEventListener('resize', syncLanding)
+      window.visualViewport?.removeEventListener('resize', syncLanding)
     }
   }, [visible])
 
