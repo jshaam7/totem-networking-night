@@ -1,4 +1,25 @@
 /* Career Connections — Round 2 targeted UI patch. Load after Round 1 styles. */
+/* Official host mark — paired with the event identity without competing with navigation. */
+.nav{width:min(100vw,1600px)}
+.nav-brand-lockup{display:flex;align-items:center;gap:16px;min-width:0;flex:none}
+.nav-brand-divider{width:1px;height:38px;background:#5b514b;flex:none}
+.nav-residence-life-logo{display:block;width:auto;height:44px;object-fit:contain;flex:none}
+.hero::after{content:'';position:absolute;z-index:2;top:clamp(34px,4.5vw,64px);right:max(5.5%,24px);width:clamp(82px,6vw,104px);aspect-ratio:1;background:#101010 url('/images/residence-life-logo.webp') center/calc(100% - 16px) auto no-repeat;border:1px solid #8b786f;border-radius:12px;pointer-events:none}
+@media(max-width:1300px){
+ .nav-brand-lockup{gap:11px}.nav-brand-divider{height:32px}.nav-residence-life-logo{height:38px}
+ .menu-toggle{display:block}
+ .nav-links{display:none;position:absolute;top:88px;left:0;right:0;background:#242221;border-bottom:1px solid #685448;padding:22px max(5.5%,24px);box-shadow:0 20px 36px #0007;align-items:stretch;gap:20px;flex-direction:column}
+ .nav-links.open{display:flex}.nav-contact{width:max-content}
+}
+@media(max-width:820px){
+ .nav-brand-lockup{gap:10px}.nav-brand-divider{height:29px}.nav-residence-life-logo{height:34px}
+ .hero::after{top:22px;right:24px;width:64px;background-size:calc(100% - 12px) auto}
+ .nav-links{top:75px}
+}
+@media(max-width:480px){
+ .nav-brand-lockup{gap:7px}.nav-brand-divider{height:25px}.nav-residence-life-logo{height:29px}
+ .hero::after{top:16px;right:18px;width:52px;background-size:calc(100% - 10px) auto}
+}
 /* RSVP — visually primary, without changing the existing event/form structure */
 .rsvp-primary,.event-rsvp,.mobile-rsvp-sticky{background:#ff853b;color:#1a1a1a;font-weight:800;border:1px solid #ff853b;display:inline-flex;align-items:center;justify-content:center;gap:9px;text-decoration:none;box-shadow:0 10px 28px #ff853b24;transition:background .18s,box-shadow .18s,transform .18s}
 .rsvp-primary:hover,.event-rsvp:hover,.mobile-rsvp-sticky:hover{background:#ffb477;box-shadow:0 13px 34px #ff853b44;transform:translateY(-2px)}
