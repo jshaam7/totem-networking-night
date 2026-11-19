@@ -4,7 +4,7 @@
 .nav-brand-lockup{display:flex;align-items:center;gap:16px;min-width:0;flex:none}
 .nav-brand-divider{width:1px;height:38px;background:#5b514b;flex:none}
 .nav-residence-life-logo{display:block;width:auto;height:44px;object-fit:contain;flex:none}
-.hero::after{content:'';position:absolute;z-index:2;top:clamp(34px,4.5vw,64px);right:max(5.5%,24px);width:clamp(82px,6vw,104px);aspect-ratio:1;background:url('/images/residence-life-logo.webp') center/contain no-repeat;pointer-events:none}
+.hero::after{content:'';position:absolute;z-index:2;top:clamp(34px,4.5vw,64px);right:max(5.5%,24px);width:clamp(82px,6vw,104px);aspect-ratio:1;background:url('/images/residence-life-logo.webp') center/contain no-repeat;border-radius:12px;pointer-events:none}
 @media(max-width:1300px){
  .nav-brand-lockup{gap:11px}.nav-brand-divider{height:32px}.nav-residence-life-logo{height:38px}
  .menu-toggle{display:block}
