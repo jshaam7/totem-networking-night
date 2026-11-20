@@ -120,19 +120,31 @@ footer .footer-brand small{line-height:1.5;letter-spacing:1px;max-width:280px}
 .invitation-map-link:hover{color:#fff2e5}
 .invitation-map-link:focus-visible{outline:3px solid #fff;outline-offset:3px;border-radius:3px}
 
-/* Seamless, genuinely scrolling orange banner. Two identical sequences ensure no visual jump. */
-.marquee-round2{position:relative;overflow:hidden;display:flex;align-items:center;height:72px;padding:0;background:linear-gradient(90deg,#ff963b,#ff832d 52%,#ffa849);color:#171717}
-.marquee-round2>.marquee-track{display:flex;align-items:center;justify-content:flex-start;gap:0;flex:0 0 auto;width:max-content;min-width:0;white-space:nowrap;animation:careerTicker 32s linear infinite;will-change:transform}
-.marquee-round2 .marquee-sequence{display:flex;align-items:center;justify-content:flex-start;gap:0;flex:0 0 auto;min-width:max-content}
-.marquee-round2 .marquee-sequence>span{display:inline-flex;align-items:center;font-size:clamp(15px,1.45vw,21px);font-weight:900;letter-spacing:.65px;line-height:1.2;color:#181818;padding:0 23px;text-transform:uppercase}
-.marquee-round2 .marquee-sequence>i{font-size:25px;font-style:normal;font-weight:900;line-height:1;color:#53230e;flex:none}
+/* Experience reel — the hero's warm ground, orbit lines and real logos where reliable assets exist. */
+.marquee-round2{position:relative;overflow:hidden;display:flex;align-items:center;height:78px;padding:0;background-color:#241d19;background-image:linear-gradient(#ff853b12 1px,transparent 1px),linear-gradient(90deg,#ff853b12 1px,transparent 1px);background-size:52px 52px;color:#fff7f0;border:0}
+.marquee-round2::after{content:'';position:absolute;z-index:0;width:270px;height:270px;right:8%;top:-118px;border:1px solid #ff853b38;border-radius:50%;pointer-events:none}
+.marquee-round2>.marquee-track{position:relative;z-index:1;display:flex;align-items:stretch;justify-content:flex-start;gap:0;flex:0 0 auto;width:max-content;min-width:0;height:100%;white-space:nowrap;animation:careerTicker 44s linear infinite;will-change:transform}
+.marquee-round2 .marquee-sequence{display:flex;align-items:stretch;justify-content:flex-start;gap:0;flex:0 0 auto;min-width:max-content;height:100%}
+.marquee-round2 .experience-lead{display:flex;align-items:center;gap:6px;min-width:max-content;padding:0 42px;color:#ff8a43}
+.marquee-round2 .experience-lead small,.marquee-round2 .experience-lead strong{font-size:clamp(16px,1.3vw,20px);font-weight:800;letter-spacing:-.35px;line-height:1;color:#ff8a43}
+.marquee-round2 .experience-lead strong{color:#fff7f0}
+.marquee-round2 .experience-entry{position:relative;display:inline-flex;align-items:center;gap:12px;min-width:max-content;padding:0 43px;color:#fff7f0}
+.marquee-round2 .experience-entry::before{content:'•';position:absolute;left:-4px;color:#ff853b;font-size:26px;line-height:1}
+.marquee-round2 .experience-name{font-size:clamp(17px,1.45vw,23px);font-weight:750;letter-spacing:-.7px;line-height:1.08;color:#fff7f0}
+.marquee-round2 .experience-logo{display:block;width:28px;height:28px;object-fit:contain;flex:none}
+.marquee-round2 .experience-logo--wordmark{width:auto;max-width:112px;height:31px}
 .marquee-round2:hover>.marquee-track,.marquee-round2:focus-within>.marquee-track{animation-play-state:paused}
 @keyframes careerTicker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 @media(max-width:600px){
- .marquee-round2{height:60px}
- .marquee-round2 .marquee-sequence>span{font-size:14px;padding:0 15px;letter-spacing:.4px}
- .marquee-round2 .marquee-sequence>i{font-size:20px}
- .marquee-round2>.marquee-track{animation-duration:28s}
+ .marquee-round2{height:68px}
+ .marquee-round2 .experience-lead{padding:0 28px}
+ .marquee-round2 .experience-lead small,.marquee-round2 .experience-lead strong{font-size:15px}
+ .marquee-round2 .experience-entry{padding:0 30px}
+ .marquee-round2 .experience-entry::before{font-size:21px}
+ .marquee-round2 .experience-name{font-size:16px}
+ .marquee-round2 .experience-logo{width:24px;height:24px}
+ .marquee-round2 .experience-logo--wordmark{width:auto;max-width:94px;height:26px}
+ .marquee-round2>.marquee-track{animation-duration:48s}
 }
 @media(prefers-reduced-motion:reduce){
  .marquee-round2{overflow-x:auto;scrollbar-width:thin}

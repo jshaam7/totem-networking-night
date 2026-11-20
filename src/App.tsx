@@ -61,6 +61,37 @@ type Profile = {
 const seededProfiles = profileData as Profile[]
 const unique = (values: string[]) => Array.from(new Set(values.filter(Boolean))).sort((a,b) => a.localeCompare(b))
 
+// A local-preview fallback from the currently published directory. On Netlify, the
+// live profiles replace this list so newly published organizations appear automatically.
+const PUBLISHED_EXPERIENCE_FALLBACK = [
+  '1Password','Samsung','Korotu','Pelvic Pain and Endometriosis Lab','Multi-Organ Transplant Lab @ BC Children‘s',
+  'UBC Data Science Institute','RBC','RBC Global Asset Management','Accendev','The Acquisition Group','SAP',
+  'H.H. Angus and Associates','BC Hydro','Connected Services BC (CSBC)','Ministry of Citizens\' Services: CSBC',
+]
+
+const EXPERIENCE_LOGOS:Record<string,{src:string;wordmark?:boolean}> = {
+  '1Password': { src:'/images/experience/1password.svg' },
+  'Samsung': { src:'/images/experience/samsung.svg', wordmark:true },
+  'RBC': { src:'/images/experience/rbc.svg' },
+  'RBC Global Asset Management': { src:'/images/experience/rbc.svg' },
+  'Accendev': { src:'/images/experience/accendev.png', wordmark:true },
+  'SAP': { src:'/images/experience/sap.svg', wordmark:true },
+  'BC Hydro': { src:'/images/experience/bc-hydro.svg', wordmark:true },
+}
+
+function ExperienceTickerSequence({organizations,duplicate=false}:{organizations:string[];duplicate?:boolean}) {
+  return <div className="marquee-sequence" aria-hidden={duplicate||undefined}>
+    <span className="experience-lead"><small>Students with</small><strong>experience at</strong></span>
+    {organizations.map(organization=>{
+      const logo=EXPERIENCE_LOGOS[organization]
+      return <span className={`experience-entry ${logo?'experience-entry--logo':''}`} key={organization} aria-label={organization}>
+        {logo&&<img className={`experience-logo ${logo.wordmark?'experience-logo--wordmark':''}`} src={logo.src} alt=""/>}
+        {!logo?.wordmark&&<span className="experience-name">{organization}</span>}
+      </span>
+    })}
+  </div>
+}
+
 const initials = (name: string) => name.split(' ').slice(0,2).map(n => n[0]).join('').toUpperCase()
 const palette = ['blue','peach','mint','lilac','gold','rose']
 function Avatar({person,large=false}:{person:Profile;large?:boolean}) {
@@ -128,6 +159,7 @@ function ProfileForm({open,siteKey,onAdded}:{open:boolean;siteKey:string;onAdded
 
 function App(){
  const [liveProfiles,setLiveProfiles]=useState<Profile[]>([])
+ const [liveProfilesLoaded,setLiveProfilesLoaded]=useState(false)
  const [submissionsOpen,setSubmissionsOpen]=useState(false)
  const [siteKey,setSiteKey]=useState('')
  const [apiWarning,setApiWarning]=useState('')
@@ -136,7 +168,8 @@ function App(){
  const industries=useMemo(()=>unique(profiles.map(p=>p.industry)),[profiles])
  const statuses=useMemo(()=>unique(profiles.map(p=>p.status)),[profiles])
  const companies=useMemo(()=>unique(profiles.flatMap(p=>p.companies)),[profiles])
- const refresh=async()=>{const response=await fetch('/api/profiles',{cache:'no-store'});if(!response.ok)throw Error('Profile service unavailable');const data=await response.json();setLiveProfiles(Array.isArray(data.profiles)?data.profiles:[])}
+ const experienceOrganizations=useMemo(()=>liveProfilesLoaded?unique(profiles.flatMap(p=>[p.organization,...p.companies])):PUBLISHED_EXPERIENCE_FALLBACK,[profiles,liveProfilesLoaded])
+ const refresh=async()=>{const response=await fetch('/api/profiles',{cache:'no-store'});if(!response.ok)throw Error('Profile service unavailable');const data=await response.json();setLiveProfiles(Array.isArray(data.profiles)?data.profiles:[]);setLiveProfilesLoaded(true)}
  useEffect(()=>{void Promise.all([fetch('/api/config',{cache:'no-store'}).then(r=>{if(!r.ok)throw Error('Config unavailable');return r.json()}).then(data=>{setSubmissionsOpen(data.open===true);setSiteKey(data.siteKey||'')}),refresh()]).catch(()=>setApiWarning('Live submissions are unavailable in this preview. Deploy to Netlify to enable them.'))},[])
  const [search,setSearch] = useState('')
  const [faculty,setFaculty] = useState('')
@@ -171,8 +204,8 @@ function App(){
   <div className="page-shell">
    <header className="nav"><div className="nav-brand-lockup"><a href="#top" className="brand" aria-label="Career Connections home"><span className="brand-mark"><span className="mark-dot"/><span className="mark-line"/><span className="mark-dot last"/></span><span className="brand-name">career<span>connections</span><small>UBC TOTEM PARK</small></span></a><span className="nav-brand-divider" aria-hidden="true"/><img className="nav-residence-life-logo" src="/images/residence-life-logo.webp" alt="UBC Residence Life"/></div><nav className={mobileMenu?'nav-links open':'nav-links'} aria-label="Main navigation"><a onClick={()=>setMobileMenu(false)} href="#directory">Explore people</a><a onClick={()=>setMobileMenu(false)} href="#about">About the event</a><a onClick={()=>setMobileMenu(false)} href="#add-profile">Add my profile</a><button type="button" ref={contactTrigger} className="nav-contact" onClick={()=>{setMobileMenu(false);setOrganizersOpen(true)}}>Contact organizers <ArrowUpRight size={15}/></button></nav><button className="menu-toggle" aria-label="Toggle menu" aria-expanded={mobileMenu} onClick={()=>setMobileMenu(!mobileMenu)}>{mobileMenu?<X size={23}/>:<Menu size={23}/>}</button></header>
    <main id="top">
-    <section className="hero" aria-labelledby="hero-title"><div className="hero-orb a"/><div className="hero-orb b"/><div className="hero-grid"/><div className="hero-main"><div className="eyebrow"><span className="eyebrow-indicator"/> NO PRESSURE. JUST POSSIBILITIES.</div><h1 id="hero-title">Your first co-op story<br/>starts with <em>“hi.”</em></h1><p>No suits. No awkward elevator pitches. Just upper-years and recent grads sharing the co-op stories, mistakes, and advice they wish they'd heard sooner. Come curious — you don't need to have it all figured out.</p><div className="hero-actions"><a className="primary-btn rsvp-primary" href={RSVP_URL} target="_blank" rel="noopener noreferrer">Save my spot <ExternalLink size={18}/></a><a className="secondary-btn hero-explore" href="#directory">Explore the people <ArrowRight size={17}/></a><a className="secondary-btn" href="#about">Event details <ArrowUpRight size={17}/></a></div><p className="rsvp-note">For first-year residents attending · Takes 1 minute. Helps us plan the food and drinks.</p></div><div className="hero-side"><div className="connection-art"><div className="art-circle big"/><div className="art-circle smaller"/><div className="floating-card one"><span className="tiny-symbol">✳</span><span>Explore possibilities<small>Start somewhere.</small></span></div><div className="floating-card two"><div className="tiny-avatars"><span>AM</span><span>JC</span><span>SK</span></div><span>Real conversations.<small>Real perspectives.</small></span></div><div className="art-lines"><i/><i/><i/></div><div className="star s1">✦</div><div className="star s2">✳</div></div><div className="hero-event-tag"><span className="tag-label">✳ YOUR INVITATION</span><div className="invitation-content"><div className="invitation-date"><strong>24</strong><span>NOV</span></div><div className="invitation-details"><span><CalendarDays size={17}/> Tuesday, November 24, 2026</span><span><Clock3 size={17}/> 6:00–8:00 PM</span><span><MapPin size={17}/> Totem Park Ballroom · UBC</span><small className="invitation-address">2525 West Mall, Vancouver, BC V6T 1W9</small><span className="invitation-food">✳ Free food &amp; drinks provided!</span></div></div><a className="invitation-map-link" href={MAPS_URL} target="_blank" rel="noopener noreferrer"><Navigation size={15}/> Get directions <ExternalLink size={13}/></a></div></div></section>
-    <div className="marquee marquee-round2" aria-label="Event topics"><div className="marquee-track"><div className="marquee-sequence"><span>SAY HI FIRST</span><i aria-hidden="true">➜</i><span>ASK THE REAL QUESTIONS</span><i aria-hidden="true">➜</i><span>STEAL THE GOOD ADVICE</span><i aria-hidden="true">➜</i><span>EXPLORE WHAT’S NEXT</span><i aria-hidden="true">➜</i></div><div className="marquee-sequence" aria-hidden="true"><span>SAY HI FIRST</span><i aria-hidden="true">➜</i><span>ASK THE REAL QUESTIONS</span><i aria-hidden="true">➜</i><span>STEAL THE GOOD ADVICE</span><i aria-hidden="true">➜</i><span>EXPLORE WHAT’S NEXT</span><i aria-hidden="true">➜</i></div></div></div>
+     <section className="hero" aria-labelledby="hero-title"><div className="hero-orb a"/><div className="hero-orb b"/><div className="hero-grid"/><div className="hero-main"><div className="eyebrow"><span className="eyebrow-indicator"/> NO PRESSURE. JUST POSSIBILITIES.</div><h1 id="hero-title">Your first co-op story<br/>starts with <em>“hi.”</em></h1><p>No suits. No awkward elevator pitches. Just upper-years and recent grads sharing the co-op stories, mistakes, and advice they wish they'd heard sooner. Come curious, you don't need to have it all figured out.</p><div className="hero-actions"><a className="primary-btn rsvp-primary" href={RSVP_URL} target="_blank" rel="noopener noreferrer">Save my spot <ExternalLink size={18}/></a><a className="secondary-btn hero-explore" href="#directory">Explore the people <ArrowRight size={17}/></a><a className="secondary-btn" href="#about">Event details <ArrowUpRight size={17}/></a></div><p className="rsvp-note">For first-year residents attending · Takes 1 minute. Helps us plan the food and drinks.</p></div><div className="hero-side"><div className="connection-art"><div className="art-circle big"/><div className="art-circle smaller"/><div className="floating-card one"><span className="tiny-symbol">✳</span><span>Explore possibilities<small>Start somewhere.</small></span></div><div className="floating-card two"><div className="tiny-avatars"><span>AM</span><span>JC</span><span>SK</span></div><span>Real conversations.<small>Real perspectives.</small></span></div><div className="art-lines"><i/><i/><i/></div><div className="star s1">✦</div><div className="star s2">✳</div></div><div className="hero-event-tag"><span className="tag-label">✳ YOUR INVITATION</span><div className="invitation-content"><div className="invitation-date"><strong>24</strong><span>NOV</span></div><div className="invitation-details"><span><CalendarDays size={17}/> Tuesday, November 24, 2026</span><span><Clock3 size={17}/> 6:00–8:00 PM</span><span><MapPin size={17}/> Totem Park Ballroom · UBC</span><small className="invitation-address">2525 West Mall, Vancouver, BC V6T 1W9</small><span className="invitation-food">✳ Free food &amp; drinks provided!</span></div></div><a className="invitation-map-link" href={MAPS_URL} target="_blank" rel="noopener noreferrer"><Navigation size={15}/> Get directions <ExternalLink size={13}/></a></div></div></section>
+    <div className="marquee marquee-round2" aria-label={`Students have experience across ${experienceOrganizations.length} organizations, including ${experienceOrganizations.slice(0,3).join(', ')}`}><div className="marquee-track"><ExperienceTickerSequence organizations={experienceOrganizations}/><ExperienceTickerSequence organizations={experienceOrganizations} duplicate/></div></div>
     <section id="directory" className="directory"><div className="section-head"><div><div className="mini-heading"><span/> THE PEOPLE</div><h2>Good people. <em>Great stories.</em></h2><p>Browse upper-years and recent grads attending the event. See what they've done, what they're into, and what you can chat with them about.</p></div><div className="count-display"><strong>{profiles.length.toString().padStart(2,'0')}</strong><span>networking<br/>professionals</span></div></div>
      
      {apiWarning&&<p className="api-warning" role="status">{apiWarning}</p>}
